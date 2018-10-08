@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="break">
     <Headers />
     <router-view/>
     <Footers />
@@ -21,5 +21,7 @@ export default {
 </script>
 
 <style>
-
+/*.break {
+  background: #
+}*/
 </style>

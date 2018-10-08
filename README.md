@@ -19,3 +19,9 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+Java路线的学习到了前端部分
+从网易云课堂学习vue.js框架制作网页
+
+这是一个用vue.js框架制作的网页，用css/html/js等，还用到了swiper做一个图片的展示框，
+
