@@ -1,18 +1,20 @@
 <template>
-	<div class="detail-wrap">
+	<!-- <div class="detail-wrap">
 		<div class="detail-left">
 			
 		</div>
 		<div class="detail-right">
 			
 		</div>
-	</div>
+	</div> -->
 	<!-- <Table :columns="columns1" :data="data1"></Table> -->
+	<Tablee />
 	
 </template>
 
 <script>
-	
+
+import Tablee from "./tablee"
 export default {
 	name:"details",
 	data(){
@@ -58,6 +60,9 @@ export default {
                     }
                 ]
 		}
+	},
+	components: {
+		Tablee
 	}
 }
 </script>
