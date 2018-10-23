@@ -1,68 +1,60 @@
 <template>
-	<!-- <div class="detail-wrap">
+	<div class="detail-wrap">
 		<div class="detail-left">
-			
+			<div class="product-board">
+				<img :src="getUrl" alt="">
+				<ul>
+					<router-link active-class="active" :to="{path:'/details/' + nav.tag}" :key="index" tag="li" v-for="(nav, index) in detailsNav">{{ nav.title }}</router-link>
+				</ul>
+			</div>
 		</div>
 		<div class="detail-right">
-			
+			<router-view></router-view>
 		</div>
-	</div> -->
-	<!-- <Table :columns="columns1" :data="data1"></Table> -->
-	<Tablee />
+	</div>
+	
 	
 </template>
 
 <script>
 
-import Tablee from "./tablee"
 export default {
 	name:"details",
 	data(){
 		return {
-			columns1: [
-                    {
-                        title: 'Name',
-                        key: 'name'
-                    },
-                    {
-                        title: 'Age',
-                        key: 'age'
-                    },
-                    {
-                        title: 'Address',
-                        key: 'address'
-                    }
-                ],
-                data1: [
-                    {
-                        name: 'John Brown',
-                        age: 18,
-                        address: 'New York No. 1 Lake Park',
-                        date: '2016-10-03'
-                    },
-                    {
-                        name: 'Jim Green',
-                        age: 24,
-                        address: 'London No. 1 Lake Park',
-                        date: '2016-10-01'
-                    },
-                    {
-                        name: 'Joe Black',
-                        age: 30,
-                        address: 'Sydney No. 1 Lake Park',
-                        date: '2016-10-02'
-                    },
-                    {
-                        name: 'Jon Snow',
-                        age: 26,
-                        address: 'Ottawa No. 2 Lake Park',
-                        date: '2016-10-04'
-                    }
-                ]
+			detailsNav:[
+				{
+					title: "开放产品",
+					tag: "earth"
+				},
+				{
+					title: "品牌营销",
+					tag: "loud"
+				},
+				{
+					title: "使命必达",
+					tag: "car"
+				},
+				{
+					title: "勇攀高峰",
+					tag: "hill"
+				}
+			],
+			imgUrl:{
+				"/details/car": require("../assets/images/1.jpg"),
+				"/details/loud": require("../assets/images/2.jpg"),
+				"/details/earth": require("../assets/images/3.jpg"),
+				"/details/hill": require("../assets/images/4.jpg"),
+			}
 		}
+			
 	},
 	components: {
-		Tablee
+	},
+	computed:{
+		getUrl(){
+			return this.imgUrl[this.$route.path];
+		}
 	}
 }
 </script>
@@ -88,7 +80,7 @@ export default {
 	background: #fff;
 	padding: 20px 0;
 }
-.product-board vl {
+.product-board ul {
 	margin-top: 20px;
 }
 .product-board li {
@@ -97,7 +89,7 @@ export default {
 	cursor: pointer;
 }
 .product-board li.active,
-.product-board li.hover {
+.product-board li:hover {
 	background: #4fc08d;
 	color: #fff;
 }

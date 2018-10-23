@@ -1,11 +1,13 @@
 <template>
 	<div class="app-head">
 		<div class="app-head-inner">
-			<img src="../assets/logo.png" alt="">
+			<router-link to="/"><img src="../assets/logo.png" alt=""></router-link>			
 			<span>尚学堂旗下品牌：云数学院|速学院|百战程序员|优效学院线上培训-优效聚名师，学习更有效</span>
 			<div class="head-nav">
 				<ul class="nav-list">
-					<li>登录</li>
+					<li>
+						<Login />
+					</li>
 					<li class="nav-pile">|</li>
 					<li>注册</li>
 					<li class="nav-pile">|</li>
@@ -18,12 +20,17 @@
 </template>
 
 <script>
+
+import Login from "./user/login"
 export default{
 	name:"header",
 	data(){
 		return{
 
 		}
+	},
+	components: {
+		Login
 	}
 }
 </script>

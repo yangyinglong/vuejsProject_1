@@ -57,7 +57,7 @@
 						<h2>{{ borad.title }}</h2>
 						<p>{{ borad.desc }}</p>
 						<div class="index-board-button">
-							<router-link to="/details" class="button">立即购买</router-link>
+							<router-link :to="{path:'/details/' + borad.tag}" class="button">立即购买</router-link>
 						</div>
 					</div>					
 				</div>
@@ -157,19 +157,19 @@ export default{
 		}
 	},
 	created() {
-		this.$axios.get("http://www.wwtliu.com/sxtstu/news/juhenews.php", {
-			params:{
-				count: 10,
-				type: "top"
-			}
-		})
-		.then(res => {
-			console.log(res.data);
-			this.news = res.data;
-		})
-		.catch(error => {
-			console.log(error)
-		})
+		// this.$axios.get("http://www.wwtliu.com/sxtstu/news/juhenews.php", {
+		// 	params:{
+		// 		count: 10,
+		// 		type: "top"
+		// 	}
+		// })
+		// .then(res => {
+		// 	console.log(res.data);
+		// 	this.news = res.data;
+		// })
+		// .catch(error => {
+		// 	console.log(error)
+		// })
 	}
 }
 </script>
@@ -180,6 +180,7 @@ export default{
 	width: 1200px;
 	margin: 0 auto;
 	overflow: hidden;
+
 }
 .index-left {
 	float: left;
@@ -191,13 +192,13 @@ export default{
 	width: 900px;
 }
 .index-left-block {
-	margin: 15px;
+	margin: 25px;
 	background: #fff;
 	box-shadow: 0 0 10px #ddd;
 	height: 450px;
 }
 .index-left-block .hr {
-	margin-bottom: 2px;
+	margin-bottom: 10px;
 	height: 2px;
 	width: 100%;
 	background: #ddd;
@@ -223,13 +224,14 @@ export default{
 .index-left-block a {
 	color: #222;
 	text-decoration:none;
+	font-size: 15px;
 }
 .index-board-list {
 	overflow: hidden;
 }
 .index-board-item {
 	float: left;
-	width: 400px;
+	width: 440px;
 	background: #fff;
 	box-shadow: 0 0 1px #ddd;
 	padding: 20px;
