@@ -6,14 +6,20 @@ import Car from '@/pages/details/car'
 import Earth from '@/pages/details/earth'
 import Loud from '@/pages/details/loud'
 import Hill from '@/pages/details/hill'
+import Print from '@/pages/print'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-		path: '/',
-		name: 'Layout',
-		component: Layout
+  		path: '/',
+  		name: 'Layout',
+  		component: Layout
+    },
+    {
+      path: '/print',
+      name: 'Print',
+      component: Print
     },
     {
     	path: '/details',
