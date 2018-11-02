@@ -122,11 +122,11 @@ export default {
 	padding-bottom: 20px;
 }
 .sales-board-line-left {
-	display: inline-block;
+	display: inline;
 	width: 100%;
 }
 .sales-board-line-right	{
-	display: inline-block;
+	display: inline;
 	width: 75%;
 }
 .sales-board-des {

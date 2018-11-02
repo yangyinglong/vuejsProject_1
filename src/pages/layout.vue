@@ -228,6 +228,7 @@ export default{
 }
 .index-board-list {
 	overflow: hidden;
+	margin-top: 20px;
 }
 .index-board-item {
 	float: left;
@@ -267,7 +268,8 @@ export default{
 	margin-top: 20px;
 }
 .lastest-news {
-	min-height: 350px;
+	/*min-height: 370px;*/
+	height: 349px;
 }
 .hot-tag {
 	background: red;
@@ -283,7 +285,7 @@ export default{
 .swiperimg {
 	width: 100%;
 	height: 450px;
-	margin-top: 18px;
+	margin-top: 25px;
 }
 .wiper-size {
 	margin-top: 20px;

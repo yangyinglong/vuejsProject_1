@@ -7,6 +7,10 @@ import Earth from '@/pages/details/earth'
 import Loud from '@/pages/details/loud'
 import Hill from '@/pages/details/hill'
 import Print from '@/pages/print'
+import Register from '@/components/user/register'
+import ForgetPass from '@/components/user/forgetPass'
+import UseG2Line from '@/pages/useg2line'
+
 Vue.use(Router)
 
 export default new Router({
@@ -20,6 +24,21 @@ export default new Router({
       path: '/print',
       name: 'Print',
       component: Print
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
+    },
+     {
+      path: '/fotgetPass',
+      name: 'ForgetPass',
+      component: ForgetPass
+    },
+    {
+      path: '/useG2Line',
+      name: 'UseG2Line',
+      component: UseG2Line
     },
     {
     	path: '/details',

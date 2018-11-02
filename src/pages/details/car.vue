@@ -10,7 +10,42 @@
 					购买数量：
 				</div>
 				<div class="sales-board-line-right">
-					<Counter />
+					<Counter @counter="getGoodInfo('counter', $event)" :max="Counter.max" :min="Counter.min"/>
+				</div>
+			</div>
+
+			<div class="sales-board-line">
+				<div class="sales-board-line-left">
+					产品类型：
+				</div>
+				<div class="sales-board-line-right">
+					<DownMenu @downmenu="getGoodInfo('downmenu', $event)" :DownDate="DownMenu"/>
+				</div>
+			</div>
+
+			<div class="sales-board-line">
+				<div class="sales-board-line-left">
+					有效时间：
+				</div>
+				<div class="sales-board-line-right">
+					<Radios @radios="getGoodInfo('radios', $event)" />
+				</div>
+			</div>
+
+			<div class="sales-board-line">
+				<div class="sales-board-line-left">
+					总价：
+				</div>
+				<div class="sales-board-line-right">
+					{{ totalprice }}元
+				</div>
+			</div>
+
+			<div class="sales-board-line">
+				<div class="sales-board-line-left">
+				</div>
+				<div class="sales-board-line-right">
+					<a class="button" href="">立即购买</a>
 				</div>
 			</div>
 			
@@ -41,21 +76,78 @@
 <script>
 
 import Counter from "./components/Counter"
+import DownMenu from "./components/DownMenu"
+import Radios from "./components/Radios"
 
 export default {
 	name: "car",
 	data() {
 		return {
-
+			counter: 1,
+			downmenu: 1,
+			radios: 1,
+			Counter: {
+				max: 10,
+				min: 2 
+			},
+			DownMenu: [
+				{
+					name: "初级版",
+					value: 1
+				},
+				{
+					name: "中极版",
+					value: 2
+				},
+				{
+					name: "高级版",
+					value: 3
+				}
+			]
 		}
 	},
 	components: {
-		Counter
+		Counter,
+		DownMenu,
+		Radios
+	},
+	methods: {
+		getCounterNum(data) {
+			console.log(data)
+		},
+		getDownMenu(data) {
+			console.log(data)
+		},
+		getRadios(data) {
+			console.log(data)
+		},
+		getGoodInfo(key, value) {
+			// console.log(key, value)
+			/**
+			 * this 是当前组件
+			 */
+			this[key] = value
+			
+		}
+	},
+	computed: {
+		totalprice: function(){
+			var readyData = {
+				"counter": this.counter,
+				"downmenu": this.downmenu,
+				"radios": this.radios
+			}
+			console.log(readyData)
+			return readyData.counter *readyData.downmenu * 2 * readyData.radios * 10			
+		}
 	}
+	
 }
 </script>
 
 <style scoped>
+
+
 .buy-dialog-title {
 	font-size: 16px;
 	font-weight: bold;
@@ -82,5 +174,13 @@ export default {
 }
 .sales-board-des li{
 	list-style-type: none;
+}
+.button {
+	background: #4fc08d;
+	color: #fff;
+	/*display: inline-block;*/
+	padding: 10px 20px;
+	cursor: pointer;
+	text-decoration:none;
 }
 </style>

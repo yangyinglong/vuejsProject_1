@@ -21,7 +21,8 @@ export default {
 </script>
 
 <style>
-/*.break {
-  background: #
-}*/
+.break {
+  background: #C9C9C9
+  /*#F8F8FF*/
+}
 </style>

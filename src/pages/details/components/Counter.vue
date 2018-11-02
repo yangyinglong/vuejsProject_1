@@ -1,10 +1,10 @@
 <template>
 	<div class="counter-component">
-		<div class="counter-btn" @click="min"> - </div>
+		<div class="counter-btn" @click="mins"> - </div>
 		<div class="counter-show">
-			<input type="text" v-model="number">
+			<input type="text" v-model="number" @keyup="inputHander">
 		</div>
-		<div class="counter-btn" @click="max"> + </div>
+		<div class="counter-btn" @click="maxs"> + </div>
 	</div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
 	name: "counter",
 	data() {
 		return {
-			number: 1
+			number: this.min
 		}
 	},
 	props: {
@@ -28,17 +28,35 @@ export default {
 		}
 	},
 	methods: {
-		min() {
+		mins() {
 			if (this.number <= this.min){
 				return;
 			}
-			this.number--;
+			this.number--
+			this.$emit("counter", this.number)
 		},
-		max() {
+		maxs() {
 			if (this.number >= this.max) {
 				return;
 			}
-			this.number++;
+			this.number++
+			this.$emit("counter", this.number)
+		},
+		inputHander() {
+			let fix;
+			if (typeof this.number === "string") {
+				fix = Number(this.number.replace(/\D/g,""));
+			} else {
+				fix = this.number
+			}
+			if (fix < this.min) {
+				fix = this.min
+			}
+			if (fix > this.max) {
+				fix = this.max
+			}
+			this.number = fix
+			this.$emit("counter", this.number)
 		}
 	}
 }
@@ -59,11 +77,12 @@ export default {
 	border: none;
 	border-top: 1px solid #e3e3e3;
 	border-bottom: 1px solid #e3e3e3;
-	height: 23px;
+	height: 25px;
 	line-height: 23px;
 	width: 30px;
 	outline: none;
-	text-align: 4px;
+	text-align: center;
+	font-size: 15px;
 }
 .counter-btn {
 	border: 1px solid #e3e3e3;

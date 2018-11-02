@@ -9,7 +9,9 @@
 						<Login />
 					</li>
 					<li class="nav-pile">|</li>
-					<li>注册</li>
+					<li>
+						<router-link to="/register">注册</router-link>
+					</li>
 					<li class="nav-pile">|</li>
 					<li>关于</li>
 				</ul>
@@ -42,6 +44,7 @@ export default{
 	height: 90px;
 	line-height: 90px;
 	width: 100%;
+	min-width: 1400px;
 }
 .app-head-inner {
 	width: 1200px;

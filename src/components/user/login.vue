@@ -22,15 +22,15 @@
 				    <div style="float: left">
 				        <el-checkbox v-model="loginform.rememberPassword">记住密码</el-checkbox>
 				    </div>
-				    <router-link to="/">
-				        <div style="float: right">忘记密码</div>
+				    <router-link to="/forgetPass" >
+				        <div style="float: right" @click="dialogFormVisible = false">忘记密码</div>
 				    </router-link>
 				</div>
 			  
 			  	<div style="height: 50px"></div>
 			  	<div slot="footer" class="dialog-footer">
-			  	  	<el-button @click="dialogFormVisible = false">取 消</el-button>
-			  	  	<el-button type="primary" @click="loginData">确 定</el-button>
+			  	  	<!-- <el-button @click="dialogFormVisible = false">取 消</el-button> -->
+			  	  	<el-button type="primary" style="width: 70%" @click="loginData">确 定</el-button>
 			  	</div>
 			</el-dialog>
 		</div>

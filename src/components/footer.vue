@@ -23,6 +23,7 @@ export default{
 	background: #e3e4e8;
 	clear: both;
 	margin-top: 30px;
+	min-width: 1400px;
 }	
 .app-foot p{
 	display: inline-block;
