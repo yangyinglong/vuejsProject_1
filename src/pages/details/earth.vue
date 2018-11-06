@@ -1,6 +1,7 @@
 <template>
 	<div>
 		{{ getTotalPrice }}
+		{{ number }}
 	</div>
 </template>
 <script>
@@ -9,7 +10,7 @@ export default {
 	name: "earth",
 	data() {
 		return {
-
+			number: sessionStorage.getItem('number'),
 		}
 	},
 	computed:{

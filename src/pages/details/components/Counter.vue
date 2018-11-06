@@ -33,6 +33,7 @@ export default {
 				return;
 			}
 			this.number--
+			sessionStorage.setItem('number', this.number)
 			this.$emit("counter", this.number)
 			this.$store.dispatch("updateOrder",["counter", this.number])
 		},
@@ -41,6 +42,7 @@ export default {
 				return;
 			}
 			this.number++
+			sessionStorage.setItem('number', this.number)
 			this.$emit("counter", this.number)
 			this.$store.dispatch("updateOrder",["counter", this.number])
 		},
@@ -58,6 +60,7 @@ export default {
 				fix = this.max
 			}
 			this.number = fix
+			sessionStorage.setItem('number', this.number)
 			this.$emit("counter", this.number)
 			this.$store.dispatch("updateOrder",["counter", this.number])
 		}

@@ -13,7 +13,8 @@ import UseG2Line from '@/pages/useg2line'
 
 Vue.use(Router)
 
-export default new Router({
+// export default new Router({
+const router = new Router({
   routes: [
     {
   		path: '/',
@@ -66,7 +67,24 @@ export default new Router({
           path: "hill",
           component: Hill
         }
-      ]
+      ],
+      meta: {authRequired: true}
     }
   ]
 })
+
+// 添加路由拦截
+
+router.beforeEach((to, from, next) => {    //判断是否需要登录拦截
+  if (to.meta.authRequired) {        //存在token正常跳转
+    if (sessionStorage.getItem('status') == 1) { // 增加一个条件
+      next()
+    } else {
+      next({path: '/'})
+    }
+  } else {
+    next()
+  }
+})
+
+export default router

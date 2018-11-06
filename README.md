@@ -107,8 +107,81 @@ Class 与 Style 绑定
 
 结构整理
 ```
+/config/index.js 
+	配置 /api/index.js 中 post 和 get 请求的根路径
+		// Paths
+		assetsSubDirectory: 'static',
+		assetsPublicPath: '/',
+		proxyTable: {
+		    '/api': {
+		        target: 'http://127.0.0.1:8888',
+		        changeOrigin: true
+		    }
+		}
+		
+/api/index.js
+	post 和 get 请求拦截器
+	封装了 axios
+
 /router/index.js
 	配置路由，配置各个页面的具体路径，将 Layout 页面设置为根路径
+	子页面的路由配置比较难，格式如下
+		{
+	    	path: '/details',
+	    	name: "details",
+	    	component: Details,
+			redirect: "details/car",
+			children: [
+				{
+					name: "car",
+					path: "car",
+					component: Car
+				}
+				...子页面
+			]
+	    }
+	还有一个就是跳转拦截，防止非法跳转和未登录访问
+	用 sessionStorage 存储信息，这样存储的信息，刷新之后也不会丢失
+		sessionStorage.setItem('key', value)	存数据
+		sessionStorage.getItem('key')			取数据
+
+/store/index.js
+	引入 vuex 来存储共享数据，包括订单中的数据和总价，这个也可以来保存登录信息等，实现购物车等
+	首先 创建 /store/index.js 文件
+		import Vue from "vue"
+		import VueX from "vuex"
+		Vue.use(Vuex)
+		export default new VueX.Store({
+			state:{
+				// 定义变量来存储数据
+				totalPrice: 0
+			},
+
+			mutations:{
+				// 
+				updatePrice(state, price){
+					state.totalPrice = price
+				}
+			},
+
+			actions:{
+				updatePrice(context, price){
+					context.commit("updatePrice", price)
+				}
+			},
+
+			getters:{
+				getTotalPrice(state){
+					return state.totalPrice >= 0 ? state.totalPrice : 0
+				}
+			}
+		})
+	然后在 main.js 中
+		import store from './store'
+		new Vue({加入 store })
+	然后在项目中就可以用 
+		this.$store.dispatch("updatePrice", totalPrice) 来存储 总价
+		this.$store.getters.getTotalPrice 来获取总价
 
 /App.vue
 	整体页面展示的加载，其中 Header 是头部，定义在 /components/header.vue 中，Footers 是尾部
@@ -218,5 +291,11 @@ Class 与 Style 绑定
 				this.show = false
 				this.$emit("downmenu", this.DownDate[index].value)
 			}
+
+
+/pagets/details/components/Radios.vue
+	这是一个列表选项，横向摆放
+
+
 
 ```
