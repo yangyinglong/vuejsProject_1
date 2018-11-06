@@ -1,6 +1,6 @@
 <template>
 	<div>
-		开放产品
+		{{ getTotalPrice }}
 	</div>
 </template>
 <script>
@@ -10,6 +10,11 @@ export default {
 	data() {
 		return {
 
+		}
+	},
+	computed:{
+		getTotalPrice(){
+			return this.$store.getters.getTotalPrice
 		}
 	}
 }

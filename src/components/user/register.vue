@@ -121,15 +121,63 @@ export default {
 	},
 	methods: {
 		submitForm: function() {
+			if (this.ruleForm2.userName === '') {
+				this.$notify({
+				  	type: 'error',
+				  	message: '请填写用户名!',
+				  	duration: 2000
+				})
+				return
+			}
+			if (this.ruleForm2.phone === '') {
+				this.$notify({
+				  	type: 'error',
+				  	message: '请填写手机号!',
+				  	duration: 2000
+				})
+				return
+			}
+			if (this.ruleForm2.pass === '') {
+				this.$notify({
+				  	type: 'error',
+				  	message: '请输入密码!',
+				  	duration: 2000
+				})
+				return
+			}
+			if (this.ruleForm2.pass !== this.ruleForm2.checkPass) {
+				this.$notify({
+				  	type: 'error',
+				  	message: '密码不一致!',
+				  	duration: 2000
+				})
+				return
+			}
 			if (!this.readAgreement) {
 				this.$notify({
 				  	type: 'error',
 				  	message: '请阅读用户协议!',
 				  	duration: 2000
 				})
-			} else {
-				console.log(this.ruleForm2)
+				return
 			}
+			var registerData = {
+				userName: this.ruleForm2.userName,
+				phone: this.ruleForm2.phone,
+				password: this.ruleForm2.pass
+			}
+			this.$http.Register(registerData).then((result) => {
+				if (result.c === 200) {
+					this.$notify({
+					  	type: 'success',
+					  	message: '注册成功!',
+					  	duration: 2000
+					})
+					this.GLOBAL.userName = this.ruleForm2.userName
+					this.$router.push({name: 'Layout'})  
+					// , params: {orderId: row.orderId}
+				}
+			})
 			
 		},
 		resetForm: function() {

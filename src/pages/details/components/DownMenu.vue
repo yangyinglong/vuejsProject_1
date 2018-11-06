@@ -50,6 +50,7 @@ export default{
 			this.nowIndex = index
 			this.show = false
 			this.$emit("downmenu", this.DownDate[index].value)
+			this.$store.dispatch("updateOrder", ["downmenu", this.DownDate[index].value])
 		},
 		showHide() {
 			this.show = !this.show

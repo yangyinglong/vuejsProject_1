@@ -6,7 +6,7 @@ axios.defaults.timeout = 60000                        // 响应时间
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'          // 配置请求头
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8'          // 配置请求头
-axios.defaults.baseURL = '/learnlsb'   // 配置线上接口地址
+axios.defaults.baseURL = '/api'   // 配置线上接口地址
 // POST传参序列化(添加请求拦截器)
 axios.interceptors.request.use((config) => {
   // 在发送请求之前做某件事
@@ -80,5 +80,9 @@ export default {
 
   Login(params) {
     return fetch('/user/login', params)
+  },
+
+  Register(params) {
+    return fetch('/user/register', params)
   }
 }

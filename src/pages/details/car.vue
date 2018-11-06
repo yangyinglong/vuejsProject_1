@@ -48,7 +48,7 @@
 					<a class="button" href="">立即购买</a>
 				</div>
 			</div>
-			
+			<!-- {{ getOrder }} -->
 		</div>
 		<div class="sales-board-des">
 			<h2>产品说明</h2>
@@ -137,8 +137,12 @@ export default {
 				"downmenu": this.downmenu,
 				"radios": this.radios
 			}
-			console.log(readyData)
-			return readyData.counter *readyData.downmenu * 2 * readyData.radios * 10			
+			var totalPrice = readyData.counter *readyData.downmenu * 2 * readyData.radios * 10
+			this.$store.dispatch("updatePrice", totalPrice)
+			return totalPrice			
+		},
+		getOrder(){
+			return this.$store.getters.getOrder;
 		}
 	}
 	

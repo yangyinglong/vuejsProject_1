@@ -12,6 +12,7 @@ import 'iview/dist/styles/iview.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Api from './api'
+import store from './store'
 
 Vue.use(ElementUI)
 Vue.use(VueAwesomeSwiper)
@@ -49,6 +50,7 @@ Vue.prototype.GLOBAL = global
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

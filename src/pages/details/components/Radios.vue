@@ -47,6 +47,7 @@ export default {
 		choose(index) {
 			this.nowIndex = index
 			this.$emit("radios", this.Radios[index].value)
+			this.$store.dispatch("updateOrder", ["radios", this.Radios[index].value])
 		}
 	}
 }
