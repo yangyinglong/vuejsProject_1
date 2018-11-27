@@ -17,7 +17,6 @@ import store from './store'
 Vue.use(ElementUI)
 Vue.use(VueAwesomeSwiper)
 Vue.use(iView)
-Vue.use(G2)
 // Vue.prototype.$axios = Axios
 Vue.prototype.$http = Api
 //全局配置
